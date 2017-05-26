@@ -1,4 +1,9 @@
 exports.keys = "ssss";
+exports.multipart = {fileExtensions: [ '.doc', 'xls' ]}
+exports.bodyParser = {
+    jsonLimit: '1mb',
+    formLimit: '1mb'
+};
 exports.middleware = [ 'cors', 'errorHandler', 'notfoundHandler' ];
 exports.cors = {
   origin: 'http://10.1.10.16:8080',
@@ -8,9 +13,11 @@ exports.cors = {
 exports.errorHandler = {
   match: '/api'
 }
-exports.api = {
-  egrand_api: 'http://10.1.10.205:8083'
-}
+exports.security = {
+  csrf: {
+    enable: false
+  },
+};
 exports.view = {
   defaultViewEngine: 'nunjucks',
   mapping: {
