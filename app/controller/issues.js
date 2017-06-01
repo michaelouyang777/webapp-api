@@ -3,7 +3,7 @@ module.exports = app => {
     * index(){
       const ctx = this.ctx;
       const page = yield ctx.service.issues.page(this.page);
-      ctx.body = page;
+      ctx.body = {success: true, result: page};
     }
     * todo(){
       const ctx = this.ctx;
@@ -21,7 +21,11 @@ module.exports = app => {
     }
     * show (){
       const ctx = this.ctx;
-      ctx.body = ctx.params.id;
+      const params = Object.assign(this.page, {
+        id: ctx.params.id
+      });
+      const vo = yield ctx.service.issues.show(params);
+      ctx.body = {success: true, result: vo};
     }
     * edit (){
       const ctx = this.ctx;
