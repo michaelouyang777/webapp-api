@@ -9,8 +9,7 @@ module.exports = app => {
 			const ctx = this.ctx;
 			const params = Object.assign(this.page, {
 			  type: ctx.params.status,
-				pageNo: ctx.query.pageNo,
-				pageSize: 5
+				pageNo: ctx.query.pageNo
 			});
 			const page = yield ctx.service.meeting.todo(params);
 			ctx.body = {success: true, result: page};
