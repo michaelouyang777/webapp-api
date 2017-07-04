@@ -12,7 +12,9 @@ module.exports = app =>{
 	
 	app.resources('outside', '/api/v1/outside/list', 'outside');		// 外出列表
 	app.get('/api/v1/outside/info/:id', 'outside.show');						// 外出详情
+	app.post('/api/v1/outside/add', 'outside.add');						// 请休假新增	
 	
 	app.resources('receipt', '/api/v1/receipt/list', 'receipt');		// 报销列表
 	app.get('/api/v1/receipt/info/:id', 'receipt.show');						// 报销详情
+	app.post('/api/v1/receipt/add', 'receipt.add');						// 请休假新增	
 }

@@ -41,6 +41,32 @@ module.exports = app => {
 		* create() {
 			this.ctx.body = "/create";
 		}
+		* add() {
+			const ctx = this.ctx;
+			const {
+				name,		// 姓名
+				money,		// 天数		
+				startDate,	// 开始时间
+				endDate,	// 结束时间
+				content	// 备注
+			} = ctx.request.body;
+//			const {
+//				success,
+//				msg,
+//				egdContext
+//			} = yield ctx.service.login.login(loginName, loginPassword, isSavePwd);
+//			if(success)
+				ctx.body = {
+					success: true,
+					result: {server:"receipt-api", data: ctx.request.body} // {"state": "success"}
+				};
+//			else {
+//				ctx.body = {
+//					success,
+//					msg
+//				};
+//			}
+		}		
 		* show() {
 			const ctx = this.ctx;
 			const params = Object.assign(this.page, {

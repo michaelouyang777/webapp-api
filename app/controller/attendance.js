@@ -46,26 +46,32 @@ module.exports = app => {
 		* add() {
 			const ctx = this.ctx;
 			const {
-				loginName,
-				loginPassword,
-				isSavePwd = false
+				name,		// 姓名
+				type,		// 类别		
+				days,		// 天数		
+				startDate,	// 开始时间
+				endDate,	// 结束时间
+				content,	// 说明
+				ouName,		// 部门
+				fileName,	// 文件名
+				fileBase64	// 文件的base64
 			} = ctx.request.body;
-			const {
-				success,
-				msg,
-				egdContext
-			} = yield ctx.service.login.login(loginName, loginPassword, isSavePwd);
-			if(success)
+//			const {
+//				success,
+//				msg,
+//				egdContext
+//			} = yield ctx.service.login.login(loginName, loginPassword, isSavePwd);
+//			if(success)
 				ctx.body = {
-					success,
-					result: JSON.parse(egdContext)
+					success: true,
+					result: {server:"attendance-api", data: ctx.request.body} // {"state": "success"}
 				};
-			else {
-				ctx.body = {
-					success,
-					msg
-				};
-			}
+//			else {
+//				ctx.body = {
+//					success,
+//					msg
+//				};
+//			}
 		}
 		* show() {
 			const ctx = this.ctx;

@@ -37,6 +37,33 @@ module.exports = app => {
 		* create() {
 			this.ctx.body = "/create";
 		}
+		* add() {
+			const ctx = this.ctx;
+			const {
+				title,		// 项目
+				creater,	// 派遣人
+				client,		// 访问客户
+				startDate,	// 起始时间
+				endDate,	// 结束时间
+				content	// 外出事项
+			} = ctx.request.body;
+//			const {
+//				success,
+//				msg,
+//				egdContext
+//			} = yield ctx.service.login.login(loginName, loginPassword, isSavePwd);
+//			if(success)
+				ctx.body = {
+					success: true,
+					result: {server:"outside-api", data: ctx.request.body} // {"state": "success"}
+				};
+//			else {
+//				ctx.body = {
+//					success,
+//					msg
+//				};
+//			}
+		}		
 		* show() {
 			const ctx = this.ctx;
 			const params = Object.assign(this.page, {
